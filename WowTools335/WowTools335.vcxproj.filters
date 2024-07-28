@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Lua">
+      <UniqueIdentifier>{070dfeb4-7e46-4869-9261-ae6603b0421f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{744219be-adfc-4fe4-9441-920d82b1d3da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Detours">
+      <UniqueIdentifier>{1b8b242f-0778-4f3e-a468-30b7009cdd70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data\Enums">
+      <UniqueIdentifier>{9bfbb49c-8cf3-4bf3-abad-4ed875c55507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{f194f74e-d368-4590-ad03-1d73f39f9f29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Warden">
+      <UniqueIdentifier>{a2391873-71b1-4ade-887c-0a844f3346d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory\Headers">
+      <UniqueIdentifier>{d1efcc2f-a6d5-48d9-a21c-f36d23f201f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Warden\Headers">
+      <UniqueIdentifier>{eb48c6ed-fbde-4cb5-b028-cc5f96bf6ac5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Warden\Detours">
+      <UniqueIdentifier>{82a1cf19-5ab2-4c0f-9901-bfe7e6401f07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{24147ff0-c6fc-4ae2-85ff-518e258c921a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Header">
+      <UniqueIdentifier>{885cbd9b-55e7-4061-b9a3-b412a46f6764}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\imgui">
+      <UniqueIdentifier>{49a21ebb-beb8-4783-bcfa-2ec309cb7fb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Windows">
+      <UniqueIdentifier>{ccfcd25e-0654-4bdf-94ea-f52c0a11b835}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Backend">
+      <UniqueIdentifier>{f2a2a04c-e382-4016-97fb-c3925c6294c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Backend\metatables">
+      <UniqueIdentifier>{9eeecc7a-27ea-42ab-8e47-6b1bcc24a068}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Backend\metatables\Timer">
+      <UniqueIdentifier>{64db4e30-e8c3-4361-abf8-ba07965731c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Backend\Func">
+      <UniqueIdentifier>{48c6b768-6f4b-46da-8db1-f83f570a4107}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectManager">
+      <UniqueIdentifier>{6aaf5f3a-55f3-4873-b78e-09ed92c50950}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectManager\Header">
+      <UniqueIdentifier>{01939b4e-a5a2-4712-bd0b-c882471130a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectManager\Cpp">
+      <UniqueIdentifier>{1be3e3c3-a5de-4cfa-8434-e6276b003972}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Backend\metatables\Objects">
+      <UniqueIdentifier>{e88e3613-984e-4205-b289-d73098e7dafe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Backend\metatables\Objects\Helperfunc">
+      <UniqueIdentifier>{5e99a671-4fb1-43d4-a9ea-8cd6543dc257}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Backend\Enums">
+      <UniqueIdentifier>{8af29b49-fcc2-4bfa-98d7-cdeff974bb29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Backend\Structures">
+      <UniqueIdentifier>{64326e9a-c5f4-4177-a7f9-c0481661be22}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lua.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaDefind.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="Detours\include\detours.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Detours\include\detver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Detours\include\syelog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceHeader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Data.h">
+      <Filter>Data</Filter>
+    </ClInclude>
+    <ClInclude Include="DetourManager.h">
+      <Filter>Memory\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryController.h">
+      <Filter>Memory\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryOperation.h">
+      <Filter>Memory\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Patch.h">
+      <Filter>Memory\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Warden.h">
+      <Filter>Warden\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WardenHelpers.h">
+      <Filter>Warden\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WardenEnums.h">
+      <Filter>Warden\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_dx9.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_win32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_rectpack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_textedit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_toggle-main\imgui_offset_rect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_toggle-main\imgui_toggle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_toggle-main\imgui_toggle_math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_toggle-main\imgui_toggle_palette.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_toggle-main\imgui_toggle_presets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_toggle-main\imgui_toggle_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers.h">
+      <Filter>UI\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Hook.h">
+      <Filter>UI\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\audiodefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\comdecl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D2D1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D2D1Helper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D2DBaseTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D2Derr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3d9.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3d9caps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3d9types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3D10.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3D10_1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3D10_1shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3D10effect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3d10misc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3d10sdklayers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3D10shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3D11.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3D11SDKLayers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3D11Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3Dcommon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3Dcompiler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3DCSX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3dx9.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3dx9anim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3dx9core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3dx9effect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3dx9math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3dx9mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3dx9shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3dx9shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3dx9tex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3dx9xof.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3DX10.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\d3dx10async.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3DX10core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3DX10math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3DX10mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3DX10tex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3DX11.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3DX11async.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3DX11core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\D3DX11tex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\Dcommon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\dinput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\dinputd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\dsconf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\dsetup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\dsound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\DWrite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\dxdiag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\DxErr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\dxfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\DXGI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\DXGIFormat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\DXGIType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\dxsdkver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\gameux.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\PIXPlugin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\rmxfguid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\rmxftmpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\rpcsal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\X3DAudio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\xact3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\xact3d3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\xact3wb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\XAPO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\XAPOBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\XAPOFX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\XAudio2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\XAudio2fx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\XDSP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\XInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\xma2defs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Microsoft DirectX SDK2010\Include\xnamath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawing.h">
+      <Filter>UI\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowFrame.h">
+      <Filter>UI\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="RegisteredFunc.h">
+      <Filter>Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerClass.h">
+      <Filter>Backend\metatables\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectMgr.h">
+      <Filter>ObjectManager\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Helperfunctions.h">
+      <Filter>Backend\metatables\Objects\Helperfunc</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedHeaders.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Powers.h">
+      <Filter>Backend\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Backend\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFields.h">
+      <Filter>Backend\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectEntry.h">
+      <Filter>Backend\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitFields.h">
+      <Filter>Backend\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitEntry.h">
+      <Filter>Backend\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectTypes.h">
+      <Filter>Backend\Enums</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lua.cpp">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceHeader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lua_OpenFrameXMlApi.cpp">
+      <Filter>Data\Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="DetourManager.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryController.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Patch.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="DriverCheck.cpp">
+      <Filter>Warden\Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="Lua_String_Check.cpp">
+      <Filter>Warden\Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryCheck.cpp">
+      <Filter>Warden\Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleCheck.cpp">
+      <Filter>Warden\Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="PageScan.cpp">
+      <Filter>Warden\Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="WardenDataHandler.cpp">
+      <Filter>Warden\Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="Warden.cpp">
+      <Filter>Warden</Filter>
+    </ClCompile>
+    <ClCompile Include="WardenHelper.cpp">
+      <Filter>Warden</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>Header Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>Header Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>Header Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_dx9.cpp">
+      <Filter>Header Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_win32.cpp">
+      <Filter>Header Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_tables.cpp">
+      <Filter>Header Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_toggle-main\imgui_toggle.cpp">
+      <Filter>Header Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_toggle-main\imgui_toggle_palette.cpp">
+      <Filter>Header Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_toggle-main\imgui_toggle_presets.cpp">
+      <Filter>Header Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_toggle-main\imgui_toggle_renderer.cpp">
+      <Filter>Header Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>Header Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooking.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="drawing.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Hacks.cpp">
+      <Filter>UI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Backend\metatables\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaFunc.cpp">
+      <Filter>Backend\Func</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectMgr.cpp">
+      <Filter>ObjectManager\Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalPlayer.cpp">
+      <Filter>Backend\metatables\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Helperfunctions.cpp">
+      <Filter>Backend\metatables\Objects\Helperfunc</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalTarget.cpp">
+      <Filter>Backend\metatables\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicObjects.cpp">
+      <Filter>Backend\metatables\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="GetGameObjects.cpp">
+      <Filter>Backend\metatables\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="WowUnits.cpp">
+      <Filter>Backend\metatables\Objects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Detours\x86\syelog.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+    <Library Include="Detours\x86\detours.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+    <Library Include="Microsoft DirectX SDK2010\Libs\d3dx9.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+    <Library Include="Microsoft DirectX SDK2010\Libs\d3dx9d.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Detours\x86\detours.pdb">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Microsoft DirectX SDK2010\Include\D3DX_DXGIFormatConvert.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="Microsoft DirectX SDK2010\Include\d3dx9math.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="Microsoft DirectX SDK2010\Include\D3DX10math.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="Microsoft DirectX SDK2010\Include\xnamathconvert.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="Microsoft DirectX SDK2010\Include\xnamathmatrix.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="Microsoft DirectX SDK2010\Include\xnamathmisc.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="Microsoft DirectX SDK2010\Include\xnamathvector.inl">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
