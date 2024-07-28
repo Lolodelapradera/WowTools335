@@ -31,6 +31,7 @@ int CreateWowUnits(lua_State* L)
 			{
 				auto ptr = ObjectMgr::GetObjectPointer(guid, TYPEMASK_UNIT);
 				lua_pushobject(L, ptr, OBJECT_MT);
+
 				lua_rawseti(L, -2, ++i);
 			}
 			return true;
