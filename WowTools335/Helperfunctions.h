@@ -4,6 +4,12 @@
 #include "Powers.h"
 #include "ObjectEntry.h"
 #include "ObjectTypes.h"
+#include "ObjectMgr.h"
+#include "GameObject.h"
+#include "UnitFields.h"
+#include "Vector3.h"
+#include <iomanip>
+#include <basetsd.h>
 
 
 #pragma warning(disable : 4067)
@@ -54,3 +60,4 @@ bool UnitDynamicFlag(UINT addr, int arg);
 int GetSpellIdDynamicObject(UINT addr);
 int GetRADIUSDynamicObject(UINT addr);
 int GetCastTimDynamicObject(UINT addr);
+std::string tohex16(UINT64 i);

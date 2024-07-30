@@ -1,10 +1,4 @@
 #include "Helperfunctions.h"
-#include "ObjectMgr.h"
-#include "GameObject.h"
-#include "UnitFields.h"
-#include "Vector3.h"
-#include <iomanip>
-#include <basetsd.h>
 
 #pragma warning(disable : 4067)
 
