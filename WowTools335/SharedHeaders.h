@@ -3,3 +3,4 @@
 
 
 typedef unsigned int UINT;
+typedef unsigned long DWORD;

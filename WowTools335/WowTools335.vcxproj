@@ -269,6 +269,7 @@
     <ClInclude Include="TimerClass.h" />
     <ClInclude Include="UnitEntry.h" />
     <ClInclude Include="UnitFields.h" />
+    <ClInclude Include="Vector3.h" />
     <ClInclude Include="Warden.h" />
     <ClInclude Include="WardenEnums.h" />
     <ClInclude Include="WardenHelpers.h" />
@@ -309,6 +310,7 @@
     <ClCompile Include="Patch.cpp" />
     <ClCompile Include="SourceHeader.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Warden.cpp" />
     <ClCompile Include="WardenDataHandler.cpp" />
     <ClCompile Include="WardenHelper.cpp" />

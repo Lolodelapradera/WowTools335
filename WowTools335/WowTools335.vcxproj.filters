@@ -444,6 +444,9 @@
     <ClInclude Include="ObjectTypes.h">
       <Filter>Backend\Enums</Filter>
     </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Backend\metatables\Objects\Helperfunc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -559,6 +562,9 @@
     </ClCompile>
     <ClCompile Include="WowUnits.cpp">
       <Filter>Backend\metatables\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>Backend\metatables\Objects\Helperfunc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

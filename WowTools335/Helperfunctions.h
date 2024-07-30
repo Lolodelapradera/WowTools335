@@ -1,6 +1,9 @@
+#pragma once
+
 #include "SharedHeaders.h"
 #include "Powers.h"
 #include "ObjectEntry.h"
+#include "ObjectTypes.h"
 
 
 #pragma warning(disable : 4067)

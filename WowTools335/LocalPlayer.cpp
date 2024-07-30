@@ -4,10 +4,7 @@
 #pragma warning(disable : 4244)
 
 
-inline unsigned long long PlayerGuid()
-{
-	return ((unsigned long long(__cdecl*)())0x4d3790)();
-}
+
 
 int CreatePlayer(lua_State* L)
 {

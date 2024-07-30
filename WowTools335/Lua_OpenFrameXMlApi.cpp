@@ -15,10 +15,11 @@ static void Lua_OpenFrameXMlApi_bulk()
     #pragma region ObjectManagerTable
     lua_createtable(L, 0, 0);
     CreatePlayer(L);
-    CreateTarget( L);
-    CreateDynamicObjects( L);
+    CreateTarget(L);
+    CreateDynamicObjects(L);
     CreateGameObjects(L);
-    CreateWowUnits(L);  
+    CreateWowUnits(L);
+
     lua_setfield(L, -2, "ObjectManager");
     #pragma endregion
 
