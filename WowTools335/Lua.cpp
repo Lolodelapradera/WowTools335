@@ -212,7 +212,6 @@ void* luaL_checkudata(lua_State* L, int index, const char* tname) {
                 lua_pop(L, 2);
                 return ud;
             }
-
             lua_pop(L, 2);
         }
     }
@@ -423,7 +422,7 @@ void lua_setpath(lua_State* L, int registry, const char* path)
     if (words.size() == 1) return lua_setfield(L, registry, path);
 
     std::string tmpStr(words.front());
-    std::cout << tmpStr << std::endl;
+    
     lua_getfield(L, registry, tmpStr.c_str()); // val, tbl
     if (!lua_istable(L, -1)) {
         lua_pop(L, 1); // val
@@ -481,7 +480,8 @@ void lua_pushcppfunction(lua_State* L, lua_CppFunction func, const char* txt)
         try {
             return (*func)(L);
         }
-        catch (const std::exception& e) {
+        catch (const std::exception& e)
+        {
             lua_error(L, "C++ exception caught: %s", e.what());
         }
         catch (...) {

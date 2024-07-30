@@ -5,7 +5,7 @@
 #include <iostream>
 
 bool Drawing::bInit = false; // Status of the initialization of ImGui.
-bool Drawing::bDisplay = true; // Status of the menu display.
+bool Drawing::bDisplay = false; // Status of the menu display.
 bool Drawing::bSetPos = false; // Status to update ImGui window size / position.
 bool Drawing::packet = false;
 ImVec2 Drawing::vWindowPos = { 0, 0 }; // Last ImGui window position.

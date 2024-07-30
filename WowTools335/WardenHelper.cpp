@@ -6,6 +6,24 @@
 #include <string>
 #include <memory>
 #include <stdexcept>
+#include <iostream>
+
+int CustomFilterFunction(DWORD exceptionCode)
+{
+
+    //printf("%d\n", exceptionCode);
+    // Check the exception code and decide what to do
+    if (exceptionCode == EXCEPTION_ACCESS_VIOLATION)
+    {
+        // Handle access violation, maybe log it
+        return EXCEPTION_EXECUTE_HANDLER; // Execute the handler
+    }
+    else
+    {
+        // For other exceptions, let the system search for another handler
+        return EXCEPTION_CONTINUE_SEARCH;
+    }
+}
 
 DWORD ReadDWORD(DWORD address)
 {
@@ -17,7 +35,7 @@ DWORD ReadDWORD(DWORD address)
     {
         return *(DWORD*)(address);
     }
-    __except (EXCEPTION_EXECUTE_HANDLER)
+    __except (CustomFilterFunction(GetExceptionCode()))
     {
 
         MessageBox(NULL, "Unable to Hook Warden, restart Wow", "Warden Hook", MB_OK | MB_ICONINFORMATION);
@@ -28,21 +46,27 @@ DWORD ReadDWORD(DWORD address)
 
 DWORD _ReadDWORD(DWORD address)
 {
+    DWORD results = 0;
+
+    // Preliminary check for null or zero address
     if (address == 0)
     {
-        return 0;
+        std::cerr << "Invalid address: null or zero." << std::endl;
+        return 0; // Return 0 or some error code
     }
 
     __try
     {
-        return *(DWORD*)(address);
+        // Attempt to read the value at the provided address
+        results = *(reinterpret_cast<DWORD*>(address));
     }
     __except (EXCEPTION_EXECUTE_HANDLER)
     {
-
-        return 0;
+        std::cerr << "Exception caught: access violation." << std::endl;
+        return 0; // Handle the exception and return an error value
     }
-    return 0;
+
+    return results;
 }
 
 std::string ParseSha1Hash(const DWORD* Seed, const DWORD* p_hash)

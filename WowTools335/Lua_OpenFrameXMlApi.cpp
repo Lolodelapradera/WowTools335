@@ -38,7 +38,8 @@ static void Lua_OpenFrameXMlApi_bulk()
 static void(*Lua_OpenFrameXMLApi_orig)() = (decltype(Lua_OpenFrameXMLApi_orig))0x00530F85;
 static void __declspec(naked) Lua_OpenFrameXMLApi_hk()
 {
-    __asm {
+    __asm
+    {
         pushad;
         pushfd;
         call Lua_OpenFrameXMlApi_bulk;

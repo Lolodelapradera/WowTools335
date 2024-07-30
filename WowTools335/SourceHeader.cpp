@@ -44,10 +44,12 @@ void LoadHacks()
 DWORD MainController()
 {
 	LoadHacks();
+	Warden::Initiative();
 	Hook::HookDirectX();
 	ConsoleApp();
 	Warden::Initiative();
 	PatchInvaildPointers();
 	Lua_OpenFrameHook();
+
 	return 0;
 }

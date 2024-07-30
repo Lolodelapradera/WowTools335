@@ -71,7 +71,7 @@ void Warden::ReapplyHacks()
 
 void Warden::Hooks(DWORD Structure, DWORD Vtable)
 {
-    if (Vtable == 0 || Structure == 0)
+    if (Vtable == NULL || Structure == NULL)
         return;
 
     DWORD StorePageScanInfo = ReadDWORD(ReadDWORD(ReadDWORD(Structure + 0x7B8)));
@@ -79,6 +79,10 @@ void Warden::Hooks(DWORD Structure, DWORD Vtable)
     DWORD DriverCheckAddress = ReadDWORD(Vtable + WardenEnum::DriverCheck);
     DWORD ModuleCheckAddress = ReadDWORD(Vtable + WardenEnum::ModuleCheck);
     DWORD TimingCheckAddress = ReadDWORD(Vtable + WardenEnum::TimingCheck);
+
+
+    if (MemoryCheckAddress == NULL || StorePageScanInfo == NULL || DriverCheckAddress == NULL || ModuleCheckAddress == NULL || TimingCheckAddress == NULL)
+        return;
 
     Loggin(true, "Warden_Scans.txt", "[+]  Starting Warden Handler\n");
     Loggin(true, "Warden_Scans.txt", "[+]  WardenStruct       : 0x%x\n", Structure);
