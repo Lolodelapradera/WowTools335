@@ -1,89 +1,89 @@
 #pragma once
 #include "Vector3.h"
 
-Vector::Vector()
+Vector3::Vector3()
 {
 	X = 0;
 	Y = 0;
 	Z = 0;
 }
 
-Vector::Vector(float x, float y, float z)
+Vector3::Vector3(float x, float y, float z)
 {
 	this->X = x;
 	this->Y = y;
 	this->Z = z;
 }
 
-Vector::Vector(const float* floatArray)
+Vector3::Vector3(const float* floatArray)
 {
 	this->X = floatArray[0];
 	this->Y = floatArray[1];
 	this->Z = floatArray[2];
 }
 
-bool Vector::Invalid() const
+bool Vector3::Invalid() const
 {
 	return (this->X == 0 && this->Y == 0 && this->Z == 0);
 }
 
-std::array<float, 3> Vector::ToFloatArray() const
+std::array<float, 3> Vector3::ToFloatArray() const
 {
 	return { this->X, this->Y, this->Z };
 }
 
-float Vector::DistanceTo(const Vector& loc)  const
+float Vector3::DistanceTo(const Vector3& loc)  const
 {
 	return sqrt(pow(X - loc.X, 2) + pow(Y - loc.Y, 2) + pow(Z - loc.Z, 2));
 }
 
-float Vector::Distance2D(const Vector& loc)  const
+float Vector3::Distance2D(const Vector3& loc)  const
 {
 	return sqrt(pow(X - loc.X, 2) + pow(Y - loc.Y, 2));
 }
 
-float Vector::Length() const
+float Vector3::Length() const
 {
 	return sqrt(pow(X, 2) + pow(Y, 2) + pow(Z, 2));
 }
 
-std::string Vector::ToJson()  const
+std::string Vector3::ToJson()  const
 {
 	return "{ \"X\": " + std::to_string(X) + ", \"Y\": " + std::to_string(Y) + ", \"Z\": " + std::to_string(Z) + "}";
 }
 
-Vector Vector::operator-(Vector& other) {
-	return Vector(X - other.X, Y - other.Y, Z - other.Z);
+Vector3 Vector3::operator-(Vector3& other) {
+	return Vector3(X - other.X, Y - other.Y, Z - other.Z);
 }
 
-Vector& Vector::operator=(const Vector& v) {
+Vector3& Vector3::operator=(const Vector3& v) {
 	X = v.X;
 	Y = v.Y;
 	Z = v.Z;
 	return *this;
 }
 
-Vector Vector::operator*(float scalar) {
-	return Vector(X * scalar, Y * scalar, Z * scalar);
+Vector3 Vector3::operator*(float scalar) {
+	return Vector3(X * scalar, Y * scalar, Z * scalar);
 }
 
-Vector Vector::operator-(const Vector& other) {
-	return Vector(X - other.X, Y - other.Y, Z - other.Z);
+Vector3 Vector3::operator-(const Vector3& other) {
+	return Vector3(X - other.X, Y - other.Y, Z - other.Z);
 }
 
 // Custom addition operator
-Vector Vector::operator+(const Vector& other) {
-	return Vector(X + other.X, Y + other.Y, Z + other.Z);
+Vector3 Vector3::operator+(const Vector3& other) {
+	return Vector3(X + other.X, Y + other.Y, Z + other.Z);
 }
 
-Vector Vector::Normalize()  const {
+Vector3 Vector3::Normalize()  const {
 	float length = sqrt(X * X + Y * Y + Z * Z);
-	return Vector(X / length, Y / length, Z / length);
+	return Vector3(X / length, Y / length, Z / length);
 }
 
-inline Vector Vector::Normalize(Vector const& v)  const
+inline Vector3 Vector3::Normalize(Vector3 const& v)  const
 {
-	Vector vec;
+	Vector3 vec;
 	float length = v.Length();
 	if (length != 0)
 	{
