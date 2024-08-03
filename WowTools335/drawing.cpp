@@ -3,9 +3,10 @@
 #include "WindowFrame.h"
 #include "RegisteredFunc.h"
 #include <iostream>
+#include "Warden.h"
 
 bool Drawing::bInit = false; // Status of the initialization of ImGui.
-bool Drawing::bDisplay = false; // Status of the menu display.
+bool Drawing::bDisplay = true; // Status of the menu display.
 bool Drawing::bSetPos = false; // Status to update ImGui window size / position.
 bool Drawing::packet = false;
 ImVec2 Drawing::vWindowPos = { 0, 0 }; // Last ImGui window position.
@@ -44,6 +45,9 @@ void callLuaFunctionsAndRemoveFromCallback()
 }
 
 
+
+
+
 HRESULT Drawing::hkEndScene(const LPDIRECT3DDEVICE9 D3D9Device)
 {
 
@@ -52,7 +56,6 @@ HRESULT Drawing::hkEndScene(const LPDIRECT3DDEVICE9 D3D9Device)
 	if (!Drawing::bInit)
 		InitImGui(D3D9Device);
 
-	callLuaFunctionsAndRemoveFromCallback();
 	
 
 	if (bDisplay)
@@ -62,10 +65,14 @@ HRESULT Drawing::hkEndScene(const LPDIRECT3DDEVICE9 D3D9Device)
 		ImGui_ImplWin32_NewFrame();
 		ImGui::NewFrame();
 
+
 		ImGui::SetNextWindowSize({ (float)400, (float)400 }, ImGuiCond_Once);
+		ImGui::SetNextWindowSizeConstraints({ 400.0f, 400.0f }, { FLT_MAX, FLT_MAX });
+
 		if (ImGui::Begin("WowTools", &bDisplay))
 		{
 			DrawHackWindow();
+			DeveloperTools();
 		}
 		ImGui::End();
 

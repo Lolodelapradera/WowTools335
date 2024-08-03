@@ -277,6 +277,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DetourManager.cpp" />
+    <ClCompile Include="DevTools.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="drawing.cpp" />
     <ClCompile Include="DriverCheck.cpp" />

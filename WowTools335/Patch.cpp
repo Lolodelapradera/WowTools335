@@ -31,13 +31,12 @@ Patch::~Patch()
 void Patch::Apply()
 {
     this->IsModified = true;
-    std::cout << "hack Applied" << std::endl;
+   
     memcpy(target, new_bytes.data(), new_bytes.size());
 }
 
 void Patch::Restore()
 {
     this->IsModified = false;
-    std::cout << "hack restored" << std::endl;
     memcpy(target, original_bytes.data(), original_bytes.size());
 }

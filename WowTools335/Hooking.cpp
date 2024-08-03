@@ -27,12 +27,8 @@ void Hook::HookDirectX()
 		oReset = (tReset)d3d9Device[16];
 
 		DetourTransactionBegin();
-
-
 		DetourUpdateThread(GetCurrentThread());
-
 		DetourAttach(&(PVOID&)oEndScene, Drawing::hkEndScene);
-
 		DetourTransactionCommit();
 	}
 }

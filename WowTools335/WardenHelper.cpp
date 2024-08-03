@@ -25,9 +25,22 @@ int CustomFilterFunction(DWORD exceptionCode)
     }
 }
 
+bool IsValidMemoryAddress(DWORD lpAddress)
+{
+    MEMORY_BASIC_INFORMATION mbi;
+    if (VirtualQueryEx(GetCurrentProcess(), reinterpret_cast<void*>(lpAddress), &mbi, sizeof(mbi)))
+    {
+        // Check if the region is committed and readable
+        return (mbi.State == MEM_COMMIT) &&
+            (mbi.Protect & (PAGE_READONLY | PAGE_READWRITE | PAGE_WRITECOPY |
+                PAGE_EXECUTE_READ | PAGE_EXECUTE_READWRITE));
+    }
+    return false;
+}
+
 DWORD ReadDWORD(DWORD address)
 {
-    if (address == 0)
+    if (address == 0 || !IsValidMemoryAddress(address))
     {
         return 0;
     }
@@ -49,10 +62,10 @@ DWORD _ReadDWORD(DWORD address)
     DWORD results = 0;
 
     // Preliminary check for null or zero address
-    if (address == 0)
+    if (address == 0 || !IsValidMemoryAddress(address))
     {
         std::cerr << "Invalid address: null or zero." << std::endl;
-        return 0; // Return 0 or some error code
+        return NULL; // Return 0 or some error code
     }
 
     __try
@@ -119,19 +132,20 @@ void WriteLogFile(const char* szString, const char* fileName)
 template<typename ... Args>
 std::string Loggin(bool toConsole, const char* fileName, const std::string& format, Args ... args)
 {
-    if (toConsole)
-        printf(format.c_str(), args ...);
+    printf(format.c_str(), args ...);
+    //if (toConsole)
+    //    printf(format.c_str(), args ...);
 
-    if ((fileName != nullptr) && (fileName[0] != '\0')) {
-        int size_s = snprintf(nullptr, 0, format.c_str(), args ...) + 1; // Extra space for '\0'
-        if (size_s <= 0) {
-            throw std::runtime_error("Error during formatting.");
-        }
-        auto size = static_cast<size_t>(size_s);
-        std::unique_ptr<char[]> buf(new char[size]);
-        snprintf(buf.get(), size, format.c_str(), args ...);
-        WriteLogFile(std::string(buf.get(), buf.get() + size - 1).c_str(), fileName);
-    }
+    //if ((fileName != nullptr) && (fileName[0] != '\0')) {
+    //    int size_s = snprintf(nullptr, 0, format.c_str(), args ...) + 1; // Extra space for '\0'
+    //    if (size_s <= 0) {
+    //        throw std::runtime_error("Error during formatting.");
+    //    }
+    //    auto size = static_cast<size_t>(size_s);
+    //    std::unique_ptr<char[]> buf(new char[size]);
+    //    snprintf(buf.get(), size, format.c_str(), args ...);
+    //    WriteLogFile(std::string(buf.get(), buf.get() + size - 1).c_str(), fileName);
+    //}
 
     return "";
 }
