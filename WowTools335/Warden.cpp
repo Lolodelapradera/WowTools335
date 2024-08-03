@@ -111,7 +111,7 @@ void Warden::Hooks(DWORD Structure, DWORD Vtable)
 
     MemoryController::PatcherController["AVRPatch"]->Apply();
     MemoryController::PatcherController["LanguagePatch"]->Apply();
-    MemoryController::PatcherController["LuaUnlocker"]->Apply();
+    //MemoryController::PatcherController["LuaUnlocker"]->Apply();
     ReapplyHacks();
 
 }

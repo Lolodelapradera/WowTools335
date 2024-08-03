@@ -274,6 +274,7 @@
     <ClInclude Include="WardenEnums.h" />
     <ClInclude Include="WardenHelpers.h" />
     <ClInclude Include="WindowFrame.h" />
+    <ClInclude Include="WoWEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DetourManager.cpp" />
@@ -309,6 +310,7 @@
     <ClCompile Include="ObjectMgr.cpp" />
     <ClCompile Include="PageScan.cpp" />
     <ClCompile Include="Patch.cpp" />
+    <ClCompile Include="SignalEvent.cpp" />
     <ClCompile Include="SourceHeader.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vector3.cpp" />

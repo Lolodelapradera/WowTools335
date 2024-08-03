@@ -423,9 +423,6 @@
     <ClInclude Include="SharedHeaders.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Powers.h">
-      <Filter>Backend\Enums</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Backend\Enums</Filter>
     </ClInclude>
@@ -446,6 +443,12 @@
     </ClInclude>
     <ClInclude Include="Vector3.h">
       <Filter>Backend\metatables\Objects\Helperfunc</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WoWEvent.h">
+      <Filter>Backend\Enums</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -565,6 +568,12 @@
     </ClCompile>
     <ClCompile Include="Vector3.cpp">
       <Filter>Backend\metatables\Objects\Helperfunc</Filter>
+    </ClCompile>
+    <ClCompile Include="DevTools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SignalEvent.cpp">
+      <Filter>Data\Detours</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

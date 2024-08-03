@@ -99,7 +99,7 @@ public:
 	static bool IsFacing(UINT BaseAddress, float angle, Vector3 position);
 	static bool FacePostion(UINT BaseAddress, float angle, Vector3 position);
 
-	static int ObjectMgr::GetDynamicObjectSpellId(UINT BaseAddress);
-	static int ObjectMgr::GetDynamicObjectRadius(UINT BaseAddress);
-	static int ObjectMgr::GetDynamicObjectCastTime(UINT BaseAddress);
+	static int GetDynamicObjectSpellId(UINT BaseAddress);
+	static int GetDynamicObjectRadius(UINT BaseAddress);
+	static int GetDynamicObjectCastTime(UINT BaseAddress);
 };

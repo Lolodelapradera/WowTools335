@@ -32,7 +32,7 @@ void LoadHacks()
 {
 	MemoryController::PatcherController["AntiAfk"] = new Patch(0x052B25F, { 0xE9, 0xEE, 0xFD, 0xFF, 0xFF, 0x90 });
 	MemoryController::PatcherController["WaterWalking"] = new Patch(0x075E439, { 0x75, 0x14, 0x81, 0xCF });
-	MemoryController::PatcherController["LuaUnlocker"] = new Patch(0x05191E0, { 0xEB, 0x57, 0x00, 0x00 });
+	//MemoryController::PatcherController["LuaUnlocker"] = new Patch(0x05191E0, { 0xEB, 0x57, 0x00, 0x00 });
 	MemoryController::PatcherController["WallClimb"] = new Patch(0x00A37F0C, { 0x00, 0x00, 0x00, 0x00 });
 	MemoryController::PatcherController["M2Collision"] = new Patch(0x007A52EC, { 0x75 });
 	MemoryController::PatcherController["LanguagePatch"] = new Patch(0x0050599F, { 0x90, 0x90, 0x8B, 0x55 });
@@ -52,6 +52,7 @@ DWORD MainController()
 	PatchInvaildPointers();
 	Hook::HookDirectX();
 	Lua_OpenFrameHook();
+	SignalEventHk();
 
 	return 0;
 }

@@ -11,6 +11,7 @@ static void Lua_OpenFrameXMlApi_bulk()
     // Create the _A table
     lua_createtable(L, 0, 0);
 
+    lua_createtable(L, 0, 0);
     // Create the ObjectManager table inside _A
     #pragma region ObjectManagerTable
     lua_createtable(L, 0, 0);
@@ -30,6 +31,7 @@ static void Lua_OpenFrameXMlApi_bulk()
     lua_pushnumber(L, 1.0);
     lua_setfield(L, -2, "VERSION");
 
+    lua_setfield(L, -2, "Backend");
 
     // Set _A as a global variable
     lua_setglobal(L, "_A");

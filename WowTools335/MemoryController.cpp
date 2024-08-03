@@ -4,7 +4,7 @@
 
 std::map<std::string, Patch*> MemoryController::PatcherController;
 std::map<std::string, DetourManager*> MemoryController::DetourPatcher;
-int MemoryController::SearchLength = 100;
+int MemoryController::SearchLength = 1000;
 
 Patch* MemoryController::CheckPatchs(DWORD Address)
 {

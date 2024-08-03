@@ -5,6 +5,9 @@
 #include "ObjectTypes.h"
 #include "GameObject.h"
 
+UINT ObjectMgr::LocalPlayerBaseAddress = 0;
+UINT ObjectMgr::LocalTargetBaseAddress = 0;
+
 UINT64 ObjectMgr::GetLocalPlayerGuid()
 {
 	return ((unsigned long long(__cdecl*)())0x4d3790)();
