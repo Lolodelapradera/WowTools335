@@ -575,6 +575,9 @@
     <ClCompile Include="SignalEvent.cpp">
       <Filter>Data\Detours</Filter>
     </ClCompile>
+    <ClCompile Include="Spell.cpp">
+      <Filter>Backend\metatables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="Detours\x86\syelog.lib">

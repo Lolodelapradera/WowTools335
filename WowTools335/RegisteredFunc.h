@@ -23,6 +23,9 @@
 #define Dynamic_PROTO "DynamicProto"
 #define Dynamic_MT "DynamicMT"
 
+#define Spell_PROTO "DynamicProto"
+#define Spell_MT "DynamicMT"
+
 std::vector<std::string> CallBack;
 int TimerMetatable(lua_State* L);
 
@@ -32,3 +35,4 @@ int CreateTarget(lua_State* L);
 int CreateDynamicObjects(lua_State* L);
 int CreateGameObjects(lua_State* L);
 int CreateWowUnits(lua_State* L);
+int CreateSpell(lua_State* L);

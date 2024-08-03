@@ -1,7 +1,7 @@
 #include "Warden.h"
 #include "WardenHelpers.h"
 
-DWORD OldAddress = 0;
+DWORD OldAddress = -1;
 DWORD load = 0;
 Warden::WardenDataHandlerType Warden::OriginalWardenDataHandler = (Warden::WardenDataHandlerType)0x007DA850;
 int __cdecl Warden::WardenDataHandler(int a1, uint16_t opcode, int a3, int pDataStore)
@@ -18,6 +18,7 @@ int __cdecl Warden::WardenDataHandler(int a1, uint16_t opcode, int a3, int pData
 				if (WardenVtableptr != NULL)
 				{
 					DWORD WardenVtable = _ReadDWORD(WardenVtableptr);
+
 					if (WardenVtable != NULL && OldAddress != WardenVtable)
 					{
 						OldAddress = WardenVtable;

@@ -312,6 +312,7 @@
     <ClCompile Include="Patch.cpp" />
     <ClCompile Include="SignalEvent.cpp" />
     <ClCompile Include="SourceHeader.cpp" />
+    <ClCompile Include="Spell.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Warden.cpp" />

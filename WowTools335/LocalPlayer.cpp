@@ -5,6 +5,13 @@
 
 int CreatePlayer(lua_State* L)
 {
+	lua_register(L, Player_PROTO ".GetName", [](lua_State* L)
+	{
+		if (ObjectMgr::LocalPlayerBaseAddress == 0) return 0;
+
+		lua_pushstring(L, ObjectMgr::GetName(ObjectMgr::LocalPlayerBaseAddress));
+		return 1;
+	});
 	#pragma region MyRegion
 	lua_createtable(L, 0, 0);
 	lua_getfield(L, LUA_REGISTRYINDEX, Player_PROTO);

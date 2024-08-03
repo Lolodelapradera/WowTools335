@@ -8,6 +8,8 @@ int MemoryController::SearchLength = 1000;
 
 Patch* MemoryController::CheckPatchs(DWORD Address)
 {
+	if(PatcherController.empty())
+		return nullptr;
 
 	for (const auto& obj : PatcherController)
 	{
@@ -53,6 +55,9 @@ bool MemoryController::BeforeOrAfter(DWORD Address, DWORD Address2)
 
 DetourManager* MemoryController::CheckDetours(DWORD Address)
 {
+	if(DetourPatcher.empty())
+		return nullptr;
+
 
 	for (const auto& obj : DetourPatcher)
 	{
