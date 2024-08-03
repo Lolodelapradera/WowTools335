@@ -31,20 +31,17 @@ void DrawHackWindow()
                 }
 
                 // Capture the initial state of the toggle
-                bool wasModified = patcher->IsModified;
+                bool wasToggled = patcher->IsToggled;
 
                 // Render the toggle and capture if it was interacted with
-                if (ImGui::Checkbox(label, &patcher->IsModified))
+                if (ImGui::Checkbox(label, &patcher->IsToggled))
                 {
                     // Check if the state changed due to interaction
-                    if (patcher->IsModified != wasModified) {
-                        if (patcher->IsModified) {
-                            patcher->Apply();
-                        }
-                        else
-                        {
+                    if (patcher->IsToggled != wasToggled) {
+                        if (patcher->IsModified)
                             patcher->Restore();
-                        }
+                        else
+                            patcher->Apply();
                     }
                 }
                 if (ImGui::IsItemHovered() && tooltip) {

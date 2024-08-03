@@ -48,7 +48,7 @@ DWORD MainController()
 {
 	LoadHacks();
 	Warden::Initiative();
-	//ConsoleApp();
+	ConsoleApp();
 	PatchInvaildPointers();
 	Hook::HookDirectX();
 	Lua_OpenFrameHook();

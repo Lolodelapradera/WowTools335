@@ -10,6 +10,6 @@ int Warden::ShutdownAndUnload()
 {
 
     printf("ShutdownAndUnload ran\n");
-    Warden::Clear();
+    Warden::RemoveHooks();
     return OriginalShutdownAndUnload();
 }
