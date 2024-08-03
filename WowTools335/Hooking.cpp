@@ -137,64 +137,63 @@ void Hook::UnHookWindow()
 
 LRESULT WINAPI Hook::WndProc(const HWND hWnd, const UINT msg, const WPARAM wParam, const LPARAM lParam)
 {
+	// Early return if ImGui is handling the window procedure
 	if (Drawing::bDisplay && ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam))
 	{
 		return true;
 	}
 
-	if (msg == WM_KEYDOWN && wParam == VK_F5)
+	// Handle different messages
+	switch (msg)
 	{
-		Drawing::bDisplay = !Drawing::bDisplay;
-	}
-	
+	case WM_KEYDOWN:
+		if (wParam == VK_F5)
+		{
+			Drawing::bDisplay = !Drawing::bDisplay;
+			return 0;
+		}
+		break;
 
-
-	if (msg == WM_CLOSE)
-	{
+	case WM_CLOSE:
 		UnHookDirectX();
 		UnHookWindow();
 		TerminateProcess(GetCurrentProcess(), 0);
-	}
+		return 0;
 
-	if (msg == WM_DESTROY)
-	{
+	case WM_DESTROY:
 		Drawing::bSetPos = true;
 		UnHookWindow();
 		Drawing::bInit = FALSE;
 		ImGui_ImplDX9_Shutdown();
 		ImGui_ImplWin32_Shutdown();
 		ImGui::DestroyContext();
-		return true;
-	}
+		return 0;
 
-	if (msg == EVENT_SYSTEM_DESKTOPSWITCH)
-	{
+	case EVENT_SYSTEM_DESKTOPSWITCH:
 		ImGui_ImplDX9_InvalidateDeviceObjects();
-	}
+		break;
 
-	ImGuiIO& io = ImGui::GetIO();
-
-	POINT mPos;
-	GetCursorPos(&mPos);
-
-	switch (msg)
-	{
 	case WM_SIZE:
 		if (wParam == SIZE_RESTORED || wParam == SIZE_MINIMIZED || wParam == SIZE_MAXIMIZED)
 		{
 			ImGui_ImplDX9_InvalidateDeviceObjects();
 		}
 		break;
-	}
-	// Let ImGui handle mouse input if needed, but only when the mouse is hovering over an ImGui window.
-	if (Drawing::bDisplay)
-	{
-		if (io.WantCaptureKeyboard || io.WantCaptureMouse)
-			return true;
+
+	default:
+		// Let ImGui handle mouse input if needed, but only when the mouse is hovering over an ImGui window.
+		if (Drawing::bDisplay)
+		{
+			ImGuiIO& io = ImGui::GetIO();
+			if (io.WantCaptureKeyboard || io.WantCaptureMouse)
+				return true;
+		}
+		break;
 	}
 
 	// Call the original window procedure for other messages.
 	return CallWindowProc(OWndProc, hWnd, msg, wParam, lParam);
 }
+
 
 	#pragma endregion

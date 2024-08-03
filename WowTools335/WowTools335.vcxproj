@@ -37,7 +37,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
+    <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
@@ -104,10 +104,10 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>Detours\Include;Microsoft DirectX SDK2010\Include;Microsoft DirectX SDK2010\Libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <TreatWarningAsError>true</TreatWarningAsError>
-      <DebugInformationFormat>OldStyle</DebugInformationFormat>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <LanguageStandard_C>Default</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -264,6 +264,7 @@
     <ClInclude Include="Patch.h" />
     <ClInclude Include="PowerType.h" />
     <ClInclude Include="RegisteredFunc.h" />
+    <ClInclude Include="Scanner.h" />
     <ClInclude Include="SharedHeaders.h" />
     <ClInclude Include="SourceHeader.h" />
     <ClInclude Include="TimerClass.h" />
@@ -310,6 +311,7 @@
     <ClCompile Include="ObjectMgr.cpp" />
     <ClCompile Include="PageScan.cpp" />
     <ClCompile Include="Patch.cpp" />
+    <ClCompile Include="Scanner.cpp" />
     <ClCompile Include="ShutdownAndUnload.cpp" />
     <ClCompile Include="SignalEvent.cpp" />
     <ClCompile Include="SourceHeader.cpp" />

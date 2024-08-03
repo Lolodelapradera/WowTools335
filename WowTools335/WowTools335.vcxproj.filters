@@ -450,6 +450,9 @@
     <ClInclude Include="WoWEvent.h">
       <Filter>Backend\Enums</Filter>
     </ClInclude>
+    <ClInclude Include="Scanner.h">
+      <Filter>Memory\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -580,6 +583,9 @@
     </ClCompile>
     <ClCompile Include="ShutdownAndUnload.cpp">
       <Filter>Warden\Detours</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanner.cpp">
+      <Filter>Memory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

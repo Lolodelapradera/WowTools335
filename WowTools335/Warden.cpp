@@ -8,7 +8,9 @@ void Warden::Initiative()
 {
     WoWBase = GetBaseAddress();
     MemoryController::DetourPatcher["Warden_Handler"] = new DetourManager(0x007DA850, &(PVOID&)OriginalWardenDataHandler, Warden::WardenDataHandler);
-    MemoryController::DetourPatcher["Warden_ShutdownAndUnload"] = new DetourManager(0x08dA420, &(PVOID&)OriginalShutdownAndUnload, Warden::ShutdownAndUnload);
+    MemoryController::PatcherController["AVRPatch"]->Apply();
+    MemoryController::PatcherController["LanguagePatch"]->Apply();
+    //MemoryController::DetourPatcher["Warden_ShutdownAndUnload"] = new DetourManager(0x08dA420, &(PVOID&)OriginalShutdownAndUnload, Warden::ShutdownAndUnload);
 }
 
 void Warden::Dispose()
@@ -24,21 +26,20 @@ void Warden::Clear()
     if (!IsApplied)
         return;
 
+
+    // Iterate over PatcherController to restore modifications
     for (const auto& key : MemoryController::PatcherController)
     {
-        if (!key.second->IsModified)
-            continue;
-
-        Loadedhacks.push_back(key.first);
-        key.second->Restore();
+        if (key.second->IsModified)
+        {
+            Loadedhacks.push_back(key.first);
+            key.second->Restore();
+        }
     }
 
+  
 
-
-  /*  MemoryController::PatcherController["AntiAfk"]->Restore();
-    MemoryController::PatcherController["WaterWalking"]->Restore();
-    MemoryController::PatcherController["LuaUnlocker"]->Restore();*/
-
+    // Keys to remove from DetourPatcher
     std::vector<std::string> keysToRemove = { "StorePageScan", "DriverCheck", "MemoryCheck", "Lua_Str_Check", "ModuleCheck" };
     for (const auto& key : keysToRemove)
     {
@@ -46,10 +47,14 @@ void Warden::Clear()
         if (it != MemoryController::DetourPatcher.end())
         {
             it->second->Remove();
-            delete it->second;
+            delete[] it->second;  // Ensure this deletion is safe and appropriate
             MemoryController::DetourPatcher.erase(it);
         }
     }
+
+  
+    
+    IsApplied = false;
 }
 
 void Warden::ReapplyHacks()
@@ -112,18 +117,18 @@ void Warden::Hooks(DWORD Structure, DWORD Vtable)
     Loggin(true, "Warden_Scans.txt", "[+]  Warden Handler Finished\n\n");
 
     OrignalMemoryCheck = (_MemoryCheck)MemoryCheckAddress;
-    MemoryController::DetourPatcher["MemoryCheck"] = new DetourManager(MemoryCheckAddress, &(PVOID&)OrignalMemoryCheck, Warden::MemoryCheck);
+    MemoryController::DetourPatcher["MemoryCheck"] =   new DetourManager(MemoryCheckAddress, &(PVOID&)OrignalMemoryCheck, Warden::MemoryCheck);
 
     pPageCheckOriginal = (PageCheckOriginal)StorePageScanInfo;
     MemoryController::DetourPatcher["StorePageScan"] = new DetourManager(StorePageScanInfo, &(PVOID&)pPageCheckOriginal, Warden::PageCheck);
 
     OriginalDriverCheck = (DriverCheckType)DriverCheckAddress;
-    MemoryController::DetourPatcher["DriverCheck"] = new DetourManager(DriverCheckAddress, &(PVOID&)OriginalDriverCheck, Warden::DriverCheck);
+    MemoryController::DetourPatcher["DriverCheck"] =   new DetourManager(DriverCheckAddress, &(PVOID&)OriginalDriverCheck, Warden::DriverCheck);
 
     MemoryController::DetourPatcher["Lua_Str_Check"] = new DetourManager(0x00819210, &(PVOID&)OrignalLua_String_Check, Warden::Lua_String_Check);
 
     OriginalModuleCheck = (_ModuleCheck)ModuleCheckAddress;
-    MemoryController::DetourPatcher["ModuleCheck"] = new DetourManager(ModuleCheckAddress, &(PVOID&)OriginalModuleCheck, Warden::Warden_ModuleCheck);
+    MemoryController::DetourPatcher["ModuleCheck"] =   new DetourManager(ModuleCheckAddress, &(PVOID&)OriginalModuleCheck, Warden::Warden_ModuleCheck);
 
     //MemoryController::PatcherController["AVRPatch"]->Apply();
     //MemoryController::PatcherController["LanguagePatch"]->Apply();

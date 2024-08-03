@@ -18,6 +18,7 @@ std::string tohex16(UINT64 i)
 	stream << "0x" << std::setw(16) << std::setfill('0') << std::hex << std::uppercase << i;
 	std::string result = stream.str();
 	return result;
+
 }
 
 float NormalizeRadian(float radian) //ClampAngle
