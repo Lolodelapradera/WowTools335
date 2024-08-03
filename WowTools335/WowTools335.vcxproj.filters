@@ -578,6 +578,9 @@
     <ClCompile Include="Spell.cpp">
       <Filter>Backend\metatables</Filter>
     </ClCompile>
+    <ClCompile Include="ShutdownAndUnload.cpp">
+      <Filter>Warden\Detours</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="Detours\x86\syelog.lib">

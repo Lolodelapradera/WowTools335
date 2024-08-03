@@ -8,6 +8,7 @@ void Warden::Initiative()
 {
     WoWBase = GetBaseAddress();
     MemoryController::DetourPatcher["Warden_Handler"] = new DetourManager(0x007DA850, &(PVOID&)OriginalWardenDataHandler, Warden::WardenDataHandler);
+    MemoryController::DetourPatcher["Warden_ShutdownAndUnload"] = new DetourManager(0x08dA420, &(PVOID&)OriginalShutdownAndUnload, Warden::ShutdownAndUnload);
 }
 
 void Warden::Dispose()
@@ -23,14 +24,17 @@ void Warden::Clear()
     if (!IsApplied)
         return;
 
-    for (const auto& key : MemoryController::PatcherController)
+    if (!MemoryController::PatcherController.empty())
     {
-        if (!key.second->IsModified)
-            continue;
+        for (const auto& key : MemoryController::PatcherController)
+        {
+            if (!key.second->IsModified)
+                continue;
 
-        Loadedhacks.push_back(key.first);
-        key.second->Restore();
-    }
+            Loadedhacks.push_back(key.first);
+            key.second->Restore();
+        }
+  }
 
 
   /*  MemoryController::PatcherController["AntiAfk"]->Restore();
@@ -81,7 +85,11 @@ void Warden::Hooks(DWORD Structure, DWORD Vtable)
     DWORD TimingCheckAddress = ReadDWORD(Vtable + WardenEnum::TimingCheck);
 
 
-    if (MemoryCheckAddress == NULL || StorePageScanInfo == NULL || DriverCheckAddress == NULL || ModuleCheckAddress == NULL || TimingCheckAddress == NULL)
+    if (MemoryCheckAddress == NULL 
+    ||   StorePageScanInfo == NULL 
+    ||  DriverCheckAddress == NULL 
+    ||  ModuleCheckAddress == NULL 
+    ||  TimingCheckAddress == NULL)
         return;
 
     Loggin(true, "Warden_Scans.txt", "[+]  Starting Warden Handler\n");
@@ -109,9 +117,11 @@ void Warden::Hooks(DWORD Structure, DWORD Vtable)
     OriginalModuleCheck = (_ModuleCheck)ModuleCheckAddress;
     MemoryController::DetourPatcher["ModuleCheck"] = new DetourManager(ModuleCheckAddress, &(PVOID&)OriginalModuleCheck, Warden::Warden_ModuleCheck);
 
-    MemoryController::PatcherController["AVRPatch"]->Apply();
-    MemoryController::PatcherController["LanguagePatch"]->Apply();
+    //MemoryController::PatcherController["AVRPatch"]->Apply();
+    //MemoryController::PatcherController["LanguagePatch"]->Apply();
     //MemoryController::PatcherController["LuaUnlocker"]->Apply();
-    ReapplyHacks();
+    //ReapplyHacks();
+
+    IsApplied = true;
 
 }

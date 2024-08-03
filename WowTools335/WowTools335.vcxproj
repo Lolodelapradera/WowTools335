@@ -310,6 +310,7 @@
     <ClCompile Include="ObjectMgr.cpp" />
     <ClCompile Include="PageScan.cpp" />
     <ClCompile Include="Patch.cpp" />
+    <ClCompile Include="ShutdownAndUnload.cpp" />
     <ClCompile Include="SignalEvent.cpp" />
     <ClCompile Include="SourceHeader.cpp" />
     <ClCompile Include="Spell.cpp" />

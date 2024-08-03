@@ -16,17 +16,23 @@ int __cdecl Warden::WardenDataHandler(int a1, uint16_t opcode, int a3, int pData
 			{
 				DWORD WardenVtableptr = _ReadDWORD(WardenStructure + 0x228);
 				printf("WardenDataHandler > WardenVtableptr >  0x%x\n", WardenVtableptr);
-				if (WardenVtableptr != NULL)
+				if (WardenVtableptr != NULL || WardenVtableptr >  0x1000000)
 				{
 					DWORD WardenVtable = _ReadDWORD(WardenVtableptr);
 					printf("WardenDataHandler > WardenVtable >  0x%x\n", WardenVtable);
+					if (WardenVtable == NULL)
+					{
+						printf("yo its fucking zero bro\n\n");
+						Warden::Clear();
+						return OriginalWardenDataHandler(a1, opcode, a3, pDataStore);
+
+					}
 					
 					if (WardenVtable != NULL && OldAddress != WardenVtable)
 					{
+						printf("your good bruh\n\n");
 						OldAddress = WardenVtable;
-						Warden::Clear();
 						Warden::Hooks(WardenStructure, WardenVtable);
-						IsApplied = true;
 					}
 				}
 			}

@@ -51,6 +51,20 @@ public:
 
 #pragma endregion
 
+
+#pragma region ShutDownAndUnload
+
+	//static int  ShutdownAndUnload();
+	//typedef int(ShutdownAndUnloadtype)();
+	//static ShutdownAndUnloadtype OriginalShutdownAndUnload;
+
+	static int ShutdownAndUnload(); // Custom method
+	typedef int(*ShutdownAndUnloadtype)(); // Typedef for the original method
+	static ShutdownAndUnloadtype OriginalShutdownAndUnload;
+	//0x08dA420
+#pragma endregion
+
+
 #pragma endregion
 
 #pragma region  Variables
