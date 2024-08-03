@@ -64,6 +64,7 @@ DWORD _ReadDWORD(DWORD address)
     // Preliminary check for null or zero address
     if (address == 0 || !IsValidMemoryAddress(address))
     {
+
         //std::cerr << "Invalid address: null or zero." << std::endl;
         return NULL; // Return 0 or some error code
     }
