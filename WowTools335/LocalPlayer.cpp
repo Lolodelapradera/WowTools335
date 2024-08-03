@@ -3,14 +3,8 @@
 #include "ObjectMgr.h"
 #pragma warning(disable : 4244)
 
-
-
-
 int CreatePlayer(lua_State* L)
 {
-	
-
-
 	#pragma region MyRegion
 	lua_createtable(L, 0, 0);
 	lua_getfield(L, LUA_REGISTRYINDEX, Player_PROTO);
@@ -24,8 +18,6 @@ int CreatePlayer(lua_State* L)
 	lua_setfield(L, -2, "__gc");
 	lua_setmetatable(L, -2);
 	lua_setfield(L, LUA_REGISTRYINDEX, Player_MT);
-
-
 
 	lua_registerfunction(L, -2, "GetLocalPlayer", [](lua_State* L)
 	{

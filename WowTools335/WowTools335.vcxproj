@@ -262,7 +262,7 @@
     <ClInclude Include="ObjectMgr.h" />
     <ClInclude Include="ObjectTypes.h" />
     <ClInclude Include="Patch.h" />
-    <ClInclude Include="Powers.h" />
+    <ClInclude Include="PowerType.h" />
     <ClInclude Include="RegisteredFunc.h" />
     <ClInclude Include="SharedHeaders.h" />
     <ClInclude Include="SourceHeader.h" />

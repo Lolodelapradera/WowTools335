@@ -1,6 +1,6 @@
 #pragma once
 
-enum Powers
+enum PowerType
 {
 	POWER_MANA = 0,
 	POWER_RAGE = 1,
