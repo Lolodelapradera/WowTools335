@@ -24,17 +24,15 @@ void Warden::Clear()
     if (!IsApplied)
         return;
 
-    if (!MemoryController::PatcherController.empty())
+    for (const auto& key : MemoryController::PatcherController)
     {
-        for (const auto& key : MemoryController::PatcherController)
-        {
-            if (!key.second->IsModified)
-                continue;
+        if (!key.second->IsModified)
+            continue;
 
-            Loadedhacks.push_back(key.first);
-            key.second->Restore();
-        }
-  }
+        Loadedhacks.push_back(key.first);
+        key.second->Restore();
+    }
+
 
 
   /*  MemoryController::PatcherController["AntiAfk"]->Restore();
@@ -59,15 +57,25 @@ void Warden::ReapplyHacks()
     if (Loadedhacks.empty())
         return;
 
+    std::vector<std::string> toRemove;
+
     for (const auto& key : Loadedhacks)
     {
         auto it = MemoryController::PatcherController.find(key);
         if (it != MemoryController::PatcherController.end())
         {
-            it->second->Apply();
-            // Remove the hack name from Loadedhacks
-            Loadedhacks.erase(std::remove(Loadedhacks.begin(), Loadedhacks.end(), key), Loadedhacks.end());
+            if (!it->second->IsModified)
+            {
+                it->second->Apply();
+                toRemove.push_back(key);
+            }
         }
+    }
+
+    // Remove collected items from Loadedhacks
+    for (const auto& key : toRemove)
+    {
+        Loadedhacks.erase(std::remove(Loadedhacks.begin(), Loadedhacks.end(), key), Loadedhacks.end());
     }
 }
 
@@ -120,7 +128,7 @@ void Warden::Hooks(DWORD Structure, DWORD Vtable)
     //MemoryController::PatcherController["AVRPatch"]->Apply();
     //MemoryController::PatcherController["LanguagePatch"]->Apply();
     //MemoryController::PatcherController["LuaUnlocker"]->Apply();
-    //ReapplyHacks();
+    ReapplyHacks();
 
     IsApplied = true;
 
