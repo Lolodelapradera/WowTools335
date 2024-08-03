@@ -17,6 +17,7 @@ public:
     void Apply();
     void Restore();
     bool IsModified = false;
+    bool IsToggled = false;
 
 private:
     int Address;

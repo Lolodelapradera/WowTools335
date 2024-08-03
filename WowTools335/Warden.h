@@ -8,9 +8,10 @@ class Warden
 public:
 	static void Initiative();
 	static void Dispose();
-	static void Clear();
-	static void ReapplyHacks();
-	static void Hooks(DWORD Structure, DWORD Vtable);
+	static void RestoreHacks();
+	static void ApplyHacks();
+	static void RemoveHooks();
+	static bool ApplyHooks(DWORD Structure, DWORD Vtable);
 
 
 #pragma region WardenData
