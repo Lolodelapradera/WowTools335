@@ -113,7 +113,7 @@ void Warden::RemoveHooks()
                 std::string padding = "\t";
                 if (key.size() <= 11)
                     padding += "\t";
-                Loggin(true, "Warden_Scans.txt", "[-] %s%s: 0x%x\n", key.c_str(), padding.c_str(), it->second->Address);
+                Loggin(true, "Warden_Scans.txt", "[-]  %s%s: 0x%x\n", key.c_str(), padding.c_str(), it->second->Address);
                 it->second->Remove();
                 delete it->second;
                 MemoryController::DetourPatcher.erase(it);
