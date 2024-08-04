@@ -40,9 +40,9 @@ bool IsValidMemoryAddress(DWORD lpAddress)
 
 DWORD ReadDWORD(DWORD address)
 {
-    if (address == 0 || !IsValidMemoryAddress(address))
+    if (address == NULL || !IsValidMemoryAddress(address))
     {
-        return 0;
+        return NULL;
     }
     __try
     {
@@ -54,19 +54,17 @@ DWORD ReadDWORD(DWORD address)
         MessageBox(NULL, "Unable to Hook Warden, restart Wow", "Warden Hook", MB_OK | MB_ICONINFORMATION);
         ExitProcess(0);
     }
-    return 0;
+    return NULL;
 }
 
 DWORD _ReadDWORD(DWORD address)
 {
-    DWORD results = 0;
+    DWORD results = NULL;
 
     // Preliminary check for null or zero address
-    if (address == 0 || !IsValidMemoryAddress(address))
+    if (address == NULL || !IsValidMemoryAddress(address))
     {
-
-        //std::cerr << "Invalid address: null or zero." << std::endl;
-        return NULL; // Return 0 or some error code
+        return NULL;
     }
 
     __try
@@ -77,7 +75,7 @@ DWORD _ReadDWORD(DWORD address)
     __except (EXCEPTION_EXECUTE_HANDLER)
     {
         std::cerr << "Exception caught: access violation." << std::endl;
-        return 0; // Handle the exception and return an error value
+        return NULL; // Handle the exception and return an error value
     }
 
     return results;
@@ -124,10 +122,20 @@ bool tContains(const char* Data, const char* substring)
 
 void WriteLogFile(const char* szString, const char* fileName)
 {
-    FILE* pFile;
-    fopen_s(&pFile, fileName, "a");
-    fprintf(pFile, szString);
-    fclose(pFile);
+    FILE* pFile = nullptr;
+    errno_t r = fopen_s(&pFile, fileName, "a");
+
+    if (r != NULL)
+    {
+        perror("Error opening file");
+        return;
+    }
+
+    if (pFile != nullptr)
+    {
+        fprintf(pFile, "%s", szString);
+        fclose(pFile);
+    }
 }
 
 template<typename ... Args>

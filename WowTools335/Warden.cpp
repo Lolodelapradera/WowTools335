@@ -59,7 +59,7 @@ bool Warden::ApplyHooks(DWORD Structure, DWORD Vtable)
         Loggin(true, "Warden_Scans.txt", "[+]  DriverCheck        : 0x%x\n", DriverCheckAddress);
         Loggin(true, "Warden_Scans.txt", "[+]  ModuleCheck        : 0x%x\n", ModuleCheckAddress);
         Loggin(true, "Warden_Scans.txt", "[+]  TimingCheck        : 0x%x\n", TimingCheckAddress);
-        Loggin(true, "Warden_Scans.txt", "[+]  Lua_String_Check   : 0x%x\n", 0x00819210);
+        Loggin(true, "Warden_Scans.txt", "[+]  LuaStringCheck     : 0x%x\n", 0x00819210);
 
         if (MemoryCheckAddress == NULL
             || StorePageScanInfo == NULL
@@ -71,24 +71,24 @@ bool Warden::ApplyHooks(DWORD Structure, DWORD Vtable)
             return false;
         }
 
+        pPageCheckOriginal = (PageCheckOriginal)StorePageScanInfo;
+        MemoryController::DetourPatcher["PageScan"] = new DetourManager(StorePageScanInfo, &(PVOID&)pPageCheckOriginal, Warden::PageCheck);
+
         OrignalMemoryCheck = (_MemoryCheck)MemoryCheckAddress;
         MemoryController::DetourPatcher["MemoryCheck"] = new DetourManager(MemoryCheckAddress, &(PVOID&)OrignalMemoryCheck, Warden::MemoryCheck);
-
-        pPageCheckOriginal = (PageCheckOriginal)StorePageScanInfo;
-        MemoryController::DetourPatcher["StorePageScan"] = new DetourManager(StorePageScanInfo, &(PVOID&)pPageCheckOriginal, Warden::PageCheck);
 
         OriginalDriverCheck = (DriverCheckType)DriverCheckAddress;
         MemoryController::DetourPatcher["DriverCheck"] = new DetourManager(DriverCheckAddress, &(PVOID&)OriginalDriverCheck, Warden::DriverCheck);
 
-        MemoryController::DetourPatcher["Lua_Str_Check"] = new DetourManager(0x00819210, &(PVOID&)OrignalLua_String_Check, Warden::Lua_String_Check);
-
         OriginalModuleCheck = (_ModuleCheck)ModuleCheckAddress;
         MemoryController::DetourPatcher["ModuleCheck"] = new DetourManager(ModuleCheckAddress, &(PVOID&)OriginalModuleCheck, Warden::Warden_ModuleCheck);
 
+        MemoryController::DetourPatcher["LuaStrCheck"] = new DetourManager(0x00819210, &(PVOID&)OrignalLua_String_Check, Warden::Lua_String_Check);
+
         ApplyHacks();
 
-        IsApplied = true;
         Loggin(true, "Warden_Scans.txt", "     -- Warden Hooks - APPLIED --\n\n");
+        IsApplied = true;
         return true;
     }
     Loggin(true, "Warden_Scans.txt", "     -- Warden Hooks - FAILED --\n\n");
@@ -104,16 +104,18 @@ void Warden::RemoveHooks()
         IsApplied = false;
         RestoreHacks();
 
-        std::vector<std::string> keysToRemove = { "StorePageScan", "DriverCheck", "MemoryCheck", "Lua_Str_Check", "ModuleCheck" };
+        std::vector<std::string> keysToRemove = {"PageScan", "MemoryCheck", "DriverCheck", "ModuleCheck", "LuaStrCheck", }; // TimingCheck Disabled
         for (const auto& key : keysToRemove)
         {
             auto it = MemoryController::DetourPatcher.find(key);
             if (it != MemoryController::DetourPatcher.end())
             {
                 std::string padding = "\t";
-                if (key.size() <= 11)
+                if (key.size() <= 8)
                     padding += "\t";
+
                 Loggin(true, "Warden_Scans.txt", "[-]  %s%s: 0x%x\n", key.c_str(), padding.c_str(), it->second->Address);
+
                 it->second->Remove();
                 delete it->second;
                 MemoryController::DetourPatcher.erase(it);

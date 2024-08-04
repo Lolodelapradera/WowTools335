@@ -11,28 +11,28 @@ int __cdecl Warden::WardenDataHandler(int a1, uint16_t opcode, int a3, int pData
 	{
 		if (_ReadDWORD(0x00D31A48) != NULL)
 		{
-			DWORD WardenStructure = _ReadDWORD(0x00D31A4C);
-			if (WardenStructure != NULL)
+			DWORD WardenStruct = _ReadDWORD(0x00D31A4C);
+			if (WardenStruct != NULL)
 			{
-				DWORD WardenVtableptr = _ReadDWORD(WardenStructure + 0x228);
-				if (WardenVtableptr != NULL)
+				DWORD WardenVtablePtr = _ReadDWORD(WardenStruct + 0x228);
+				if (WardenVtablePtr != NULL)
 				{
-					DWORD WardenVtable = _ReadDWORD(WardenVtableptr);
+					DWORD WardenVtable = _ReadDWORD(WardenVtablePtr);
 					if (WardenVtable != NULL)
 					{
 						if (WardenStructOld == NULL)
 						{
-							Warden::ApplyHooks(WardenStructure, WardenVtable);
-							WardenStructOld = WardenStructure;
-							WardenVtablePtrOld = WardenVtableptr;
+							Warden::ApplyHooks(WardenStruct, WardenVtable);
+							WardenStructOld = WardenStruct;
+							WardenVtablePtrOld = WardenVtablePtr;
 							WardenVtableOld = WardenVtable;
 						}
-						else if (WardenStructOld != WardenStructure || WardenVtablePtrOld != WardenVtableptr || WardenVtableOld != WardenVtable)
+						else if (WardenStructOld != WardenStruct || WardenVtablePtrOld != WardenVtablePtr || WardenVtableOld != WardenVtable)
 						{
 							Warden::RemoveHooks();
-							Warden::ApplyHooks(WardenStructure, WardenVtable);
-							WardenStructOld = WardenStructure;
-							WardenVtablePtrOld = WardenVtableptr;
+							Warden::ApplyHooks(WardenStruct, WardenVtable);
+							WardenStructOld = WardenStruct;
+							WardenVtablePtrOld = WardenVtablePtr;
 							WardenVtableOld = WardenVtable;
 						}
 					}

@@ -48,11 +48,11 @@ DWORD MainController()
 {
 	LoadHacks();
 	Warden::Initiative();
-	//ConsoleApp();
 	PatchInvaildPointers();
-	Hook::HookDirectX();
 	Lua_OpenFrameHook();
 	SignalEventHk();
+	ConsoleApp();
+	Hook::HookDirectX();
 
 	return 0;
 }
