@@ -8,7 +8,6 @@ Warden::ShutdownAndUnloadtype Warden::OriginalShutdownAndUnload = (Warden::Shutd
 // Custom implementation of ShutdownAndUnload
 int Warden::ShutdownAndUnload()
 {
-
     printf("ShutdownAndUnload ran\n");
     Warden::RemoveHooks();
     return OriginalShutdownAndUnload();

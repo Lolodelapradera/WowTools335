@@ -15,35 +15,31 @@ void Warden::Dispose()
 {
     RemoveHooks();
     MemoryController::DetourPatcher["Warden_Handler"]->Remove();
+    //MemoryController::DetourPatcher["Warden_ShutdownAndUnload"]->Remove();
 }
 
 void Warden::RestoreHacks()
 {
     for (const auto& key : MemoryController::PatcherController)
-    {
         if (key.second->IsModified)
-        {
             key.second->Restore();
-        }
-    }
+    Loggin(true, "Warden_Scans.txt", "[-]  Hacks\t\t: Removed!\n");
 }
 
 void Warden::ApplyHacks()
 {
     for (const auto& key : MemoryController::PatcherController)
-    {
         if (key.second->IsToggled)
-        {
             key.second->Apply();
-        }
-    }
+    Loggin(true, "Warden_Scans.txt", "[+]  Hacks\t\t: Applied!\n");
 }
 
 bool Warden::ApplyHooks(DWORD Structure, DWORD Vtable)
 {
     if (!IsApplied)
     {
-        Loggin(true, "Warden_Scans.txt", "\n[+]  -- Applying Warden Hooks --\n");
+        Loggin(true, "Warden_Scans.txt", "\n     -- Applying Warden Hooks --\n");
+
         if (Vtable == NULL || Structure == NULL)
         {
             Loggin(true, "Warden_Scans.txt", "[+]  ERROR: Vtable->0x%x Struct->0x%x\n");
@@ -89,16 +85,13 @@ bool Warden::ApplyHooks(DWORD Structure, DWORD Vtable)
         OriginalModuleCheck = (_ModuleCheck)ModuleCheckAddress;
         MemoryController::DetourPatcher["ModuleCheck"] = new DetourManager(ModuleCheckAddress, &(PVOID&)OriginalModuleCheck, Warden::Warden_ModuleCheck);
 
-        //MemoryController::PatcherController["AVRPatch"]->Apply();
-        //MemoryController::PatcherController["LanguagePatch"]->Apply();
-        //MemoryController::PatcherController["LuaUnlocker"]->Apply();
-        //ApplyHacks();
-        Loggin(true, "Warden_Scans.txt", "[+]  Hacks Applied\n");
+        ApplyHacks();
 
         IsApplied = true;
-        Loggin(true, "Warden_Scans.txt", "[+]  -- Warden Hooks Applied! --\n\n");
+        Loggin(true, "Warden_Scans.txt", "     -- Warden Hooks - APPLIED --\n\n");
+        return true;
     }
-    
+    Loggin(true, "Warden_Scans.txt", "     -- Warden Hooks - FAILED --\n\n");
     return false;
 }
 
@@ -106,10 +99,10 @@ void Warden::RemoveHooks()
 {
     if (IsApplied)
     {
-        Loggin(true, "Warden_Scans.txt", "\n[-]  -- Removing Warden Hooks --\n");
+        Loggin(true, "Warden_Scans.txt", "\n     -- Removing Warden Hooks --\n");
 
+        IsApplied = false;
         RestoreHacks();
-        Loggin(true, "Warden_Scans.txt", "[-]  Hacks Removed\n");
 
         std::vector<std::string> keysToRemove = { "StorePageScan", "DriverCheck", "MemoryCheck", "Lua_Str_Check", "ModuleCheck" };
         for (const auto& key : keysToRemove)
@@ -117,19 +110,16 @@ void Warden::RemoveHooks()
             auto it = MemoryController::DetourPatcher.find(key);
             if (it != MemoryController::DetourPatcher.end())
             {
-                std::string str = "\t";
+                std::string padding = "\t";
                 if (key.size() <= 11)
-                    str += "\t";
-                Loggin(true, "Warden_Scans.txt", "[-] %s%s: 0x%x\n", key.c_str(), str.c_str(), it->second->Address);
+                    padding += "\t";
+                Loggin(true, "Warden_Scans.txt", "[-] %s%s: 0x%x\n", key.c_str(), padding.c_str(), it->second->Address);
                 it->second->Remove();
                 delete it->second;
                 MemoryController::DetourPatcher.erase(it);
             }
         }
-        IsApplied = false;
 
-        Loggin(true, "Warden_Scans.txt", "[-]  -- Warden Hooks Removed! --\n\n");
+        Loggin(true, "Warden_Scans.txt", "     -- Warden Hooks - REMOVED --\n\n");
     }
-
-    
 }

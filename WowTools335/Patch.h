@@ -11,7 +11,7 @@ class Patch : public MemoryOperation
 {
 public:
     Patch(int target_addr, std::initializer_list<byte> bytes);
-    Patch(int target_addr, std::initializer_list<byte> bytes, bool apply);
+    //Patch(int target_addr, std::initializer_list<byte> bytes, bool apply);
     ~Patch();
 
     void Apply();
